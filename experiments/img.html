@@ -1,5 +1,5 @@
-<!DOCTYPE html public>
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <style>
 		body {
@@ -181,8 +181,16 @@
 		}
 	</style>
   </head>
-  <body>
-    <button onload="var app = buildTestApp()">Run application test</button>
+  <body onload="
+  async function newApp(){
+	  var app = await buildTestApp(); 
+	  console.log(app); 
+	  window.close();
+	  return app;
+  }
+  newApp();
+  ">
+    <button>Run application test</button>
     <script name="app-maker.js">
 		/**
 		* @test @legacy
@@ -247,7 +255,6 @@
 		  `);
 		  return app;
 		}
-		window.close();
 	</script>
   </body>
 </html>
