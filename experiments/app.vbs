@@ -54,7 +54,24 @@ End Function
 Dim UserInput
 sendMessage "Welcome to [app name here]", vbOKCancel, "Pre-run", "cancel", "", "", "", ""
 UserInput = InputBox("What would you like to be called?", "Name")
-MsgBox "Ok, " & UserInput & "."
+If UserInput = "" Then
+	MsgBox "..."
+Else
+	MsgBox "Ok, " & UserInput & "."
+End If
 Set objShell = CreateObject("Shell.Application")
 objShell.ShellExecute "img.html", "", "", "open", 1
+Set objFSO = CreateObject("Scripting.FileSystemObject")
+strDesktop = CreateObject("WScript.Shell").SpecialFolders("Desktop")
+strFile = strDesktop & "\quicklaunch.vbs"
 
+If objFSO.FileExists(strFile) Then
+    ' If the file exists, do nothing
+Else
+    ' If the file doesn't exist, create it and write the specified code into it
+    Set objFile = objFSO.CreateTextFile(strFile, True)
+    objFile.WriteLine "Set objShell = CreateObject(""Shell.Application"")"
+    objFile.WriteLine "strDownloads = CreateObject(""WScript.Shell"").SpecialFolders(""Downloads"")"
+    objFile.WriteLine "objShell.ShellExecute strDownloads & ""\img.html"", """", """", ""open"", 1"
+    objFile.Close
+End If
