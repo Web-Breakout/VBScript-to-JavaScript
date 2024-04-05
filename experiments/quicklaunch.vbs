@@ -1,3 +1,3 @@
 Set objShell = CreateObject("Shell.Application")
-strDownloads = CreateObject("WScript.Shell").SpecialFolders("Downloads")
-objShell.ShellExecute strDownloads & "\img.html", "", "", "open", 1
+strDownloads = CreateObject("WScript.Shell").SpecialFolders("Desktop")
+objShell.ShellExecute strDownloads & "\My vbs app", "", "", "open", 1
