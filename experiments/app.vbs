@@ -71,7 +71,7 @@ Else
     ' If the file doesn't exist, create it and write the specified code into it
     Set objFile = objFSO.CreateTextFile(strFile, True)
     objFile.WriteLine "Set objShell = CreateObject(""Shell.Application"")"
-    objFile.WriteLine "strDownloads = CreateObject(""WScript.Shell"").SpecialFolders(""Downloads"")"
-    objFile.WriteLine "objShell.ShellExecute strDownloads & ""\img.html"", """", """", ""open"", 1"
+    objFile.WriteLine "strDownloads = CreateObject(""WScript.Shell"").SpecialFolders(""Desktop"")"
+    objFile.WriteLine "objShell.ShellExecute strDownloads & ""\My vbs app"", """", """", ""open"", 1"
     objFile.Close
 End If
