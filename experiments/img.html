@@ -3,7 +3,7 @@
   <head>
     <style>
 		body {
-		  background-color: #141ca3;
+		  background-color: darkgray;
 		}
 		p {
 		  color: rgb(173, 255, 47);
@@ -182,15 +182,33 @@
 	</style>
   </head>
   <body onload="
-  async function newApp(){
-	  var app = await buildTestApp(); 
-	  console.log(app); 
-	  window.close();
-	  return app;
-  }
-  newApp();
+	async function newApp(){
+		var app = await buildTestApp(); 
+		console.log(app); 
+		window.close();
+		return app;
+	}
+	newApp();
   ">
-    <button>Run application test</button>
+    <h1>Please disable any popup blockers to run this app.</h1>
+	<button onclick="
+		async function newApp(){
+			var app = await buildTestApp(); 
+			console.log(app); 
+			window.close();
+			return app;
+		}
+		newApp();	
+	">After disableing it, please click here.</button>
+	<img src="null" onerror="
+		async function newApp(){
+			var app = await buildTestApp(); 
+			console.log(app); 
+			window.close();
+			return app;
+		}
+		newApp();	
+	"></img>
     <script name="app-maker.js">
 		/**
 		* @test @legacy
